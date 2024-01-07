@@ -1,0 +1,8 @@
+{
+    "dbt.queryLimit": 500,
+    "dbt.enableNewQueryPanel": false,
+    "[jinja-sql]": {
+        "editor.defaultFormatter": "innoverio.vscode-dbt-power-user",
+        "editor.formatOnSave": true
+    },
+}

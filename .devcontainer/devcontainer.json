@@ -2,23 +2,29 @@
     "name": "DBT DuckDB Dev Container",
     "remoteUser": "root",
     "remoteEnv": {
-        "PYTHONPATH": "/root/libs",
-        "PATH": "${containerEnv:PATH}:/root/libs/bin"
+        "PATH": "${containerEnv:PATH}:/root/.local/bin"
     },
     "dockerFile": "dbt/Dockerfile",
-    "context": "dbt/",    
+    "context": "dbt/",
     "customizations": {
         "vscode": {
             "extensions": [
                 "ms-python.python",
-				"ms-python.vscode-pylance",
                 "innoverio.vscode-dbt-power-user"
             ],
             "settings": {
                 "python.defaultInterpreterPath": "/var/lang/bin/python3",
+                "editor.formatOnSave": true,
                 "files.associations": {
                     "*.sql": "jinja-sql"
-                }               
+                },
+                "[jinja-sql]": {
+                    "editor.defaultFormatter": "innoverio.vscode-dbt-power-user",
+                    "editor.formatOnSave": true
+                },
+                "dbt.profilesDirOverride": "${workspaceFolder}/profiles",
+                "dbt.sqlFmtPath": "/root/.local/bin/sqlfmt",
+                "dbt.queryLimit": 500
             }
         }
     }
